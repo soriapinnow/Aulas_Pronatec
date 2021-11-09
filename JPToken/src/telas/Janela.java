@@ -1,6 +1,8 @@
 package telas;
 
 
+import controles.ControleAluno;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import password.PasswordGenerator;
 
@@ -15,11 +17,13 @@ import password.PasswordGenerator;
  * @author jeanp
  */
 public class Janela extends javax.swing.JFrame {
+    private ControleAluno controle;
 
     /**
      * Creates new form Janela
      */
     public Janela() {
+        controle = new ControleAluno();
         initComponents();
     }
 
@@ -38,8 +42,8 @@ public class Janela extends javax.swing.JFrame {
         lblPass = new javax.swing.JLabel();
         txtMat = new javax.swing.JTextField();
         btnSair = new javax.swing.JButton();
-        txtPass = new javax.swing.JPasswordField();
         btnCad = new javax.swing.JButton();
+        txtPass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(800, 300));
@@ -69,13 +73,7 @@ public class Janela extends javax.swing.JFrame {
             }
         });
 
-        txtPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPassActionPerformed(evt);
-            }
-        });
-
-        btnCad.setText("Cadastrar");
+        btnCad.setText("Cadastro");
         btnCad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadActionPerformed(evt);
@@ -105,7 +103,7 @@ public class Janela extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtMat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -117,7 +115,7 @@ public class Janela extends javax.swing.JFrame {
                     .addComponent(lblUser)
                     .addComponent(txtMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPass)
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
@@ -135,10 +133,17 @@ public class Janela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
-    new JanelaToken().setVisible(true);
-    PasswordGenerator passwordGenerator = new PasswordGenerator();
-    PasswordGenerator.generatePassword(6);
-    dispose();
+        ArrayList<String> dadosAluno = controle.logar(txtMat.getText());
+        
+        if (dadosAluno.get(0).equals(txtPass.getText())){
+            new JanelaToken().setVisible(true);
+            PasswordGenerator passwordGenerator = new PasswordGenerator();
+            PasswordGenerator.generatePassword(6);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Dados incorretos, insira os dados novamente!");
+    }
+    
     }//GEN-LAST:event_btnLogActionPerformed
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         txtMat.setText("");
@@ -148,10 +153,6 @@ public class Janela extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
-
-    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassActionPerformed
 
     private void btnCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadActionPerformed
                 new JanelaCad().setVisible(true);
@@ -203,6 +204,6 @@ public class Janela extends javax.swing.JFrame {
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblUser;
     private javax.swing.JTextField txtMat;
-    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtPass;
     // End of variables declaration//GEN-END:variables
 }

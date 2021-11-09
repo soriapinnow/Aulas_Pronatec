@@ -5,9 +5,9 @@
  */
 package aluno;
 
-public abstract class Aluno {
-    private String nome, mat, pass, turno;
-
+public class Aluno {
+    private String nome, mat, turno, pass;
+   
     /**
      * @return the nome
      */
