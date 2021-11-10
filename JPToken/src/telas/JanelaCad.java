@@ -52,6 +52,7 @@ public class JanelaCad extends javax.swing.JFrame {
         txtPass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(800, 300));
 
         lblNome.setText("Nome Aluno: ");
 
@@ -253,7 +254,6 @@ public class JanelaCad extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
        controle.alterar(txtMat.getText(), txtNome.getText(), txtTurno.getText(), txtPass.getText());
-
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
