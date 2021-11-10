@@ -67,10 +67,10 @@ public class DAOAluno {
           
           
           PreparedStatement preparedStatement = conexao.prepareStatement(instrucaoUpdate);
-          preparedStatement.setString(1, aluno.getMat());
-          preparedStatement.setString(2, aluno.getNome());
-          preparedStatement.setString(3, aluno.getTurno());
-          preparedStatement.setString(4, aluno.getPass());
+          preparedStatement.setString(4, aluno.getMat());
+          preparedStatement.setString(1, aluno.getNome());
+          preparedStatement.setString(2, aluno.getTurno());
+          preparedStatement.setString(3, aluno.getPass());
  
           preparedStatement.executeUpdate();
           

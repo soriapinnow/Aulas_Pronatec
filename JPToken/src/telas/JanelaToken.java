@@ -35,6 +35,7 @@ public class JanelaToken extends javax.swing.JFrame {
         btnGerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(800, 300));
 
         lblToken.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblToken.setText("Token:");
